@@ -79,7 +79,7 @@ const updateProfileUser = async (userData: UpdateUser) => {
 
   try {
     const { data } = await axios.put(
-      API_URL + `update-user`,
+      API_URL + `update-user/${userData.Id}`,
       {
         UserName: userData.UserName,
         LastName: userData.LastName,

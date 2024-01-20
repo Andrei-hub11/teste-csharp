@@ -135,7 +135,7 @@ const useFormKit = (form: FormProps) => {
     }
 
     if (isEditFormData(values)) {
-      const editData: EditFormData = values;
+      const editData: EditFormData = { ...values, Id: user ? user.Id : "" };
       handleEditAction && handleEditAction(editData);
     }
 

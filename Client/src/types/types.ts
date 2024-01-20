@@ -14,6 +14,7 @@ export interface LoginFormData {
 }
 
 export interface EditFormData {
+  Id: string;
   name: string;
   lastname: string;
   email: string;
@@ -32,6 +33,7 @@ export interface UserLogin {
 }
 
 export interface UpdateUser {
+  Id: string;
   UserName: string;
   LastName: string;
   Email: string;
@@ -60,6 +62,7 @@ export interface Field {
 }
 
 export interface UserToEdit {
+  Id: string;
   name: string;
   lastname: string;
   email: string;

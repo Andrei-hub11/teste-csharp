@@ -100,6 +100,7 @@ function Home() {
                   navigate("/edit-user");
                   dispatch(
                     setUserToEdit({
+                      Id: user.Id,
                       name: user.UserName,
                       lastname: user.LastName,
                       email: user.Email,

@@ -14,7 +14,7 @@ public interface IAccount
     Task<IdentityResult> CreateAsync(ApplicationUser user, string password);
     Task<IdentityResult> AddToRoleAsync(ApplicationUser user, string role);
     Task<IList<string>> GetRolesAsync(ApplicationUser user);
-    Task<ErrorOr<UserDTO>> UpdateUserAsync (UserUpdateModel userData);
+    Task<ErrorOr<UserDTO>> UpdateUserAsync (UserUpdateModel userData, string userId);
     Task<ErrorOr<IdentityResult>> DeleteUserAsync(string email);
 
 }

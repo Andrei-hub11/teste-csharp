@@ -30,6 +30,7 @@ function EditUser() {
 
   const handleEditAction = (values: EditFormData) => {
     const newUser: UpdateUser = {
+      Id: values.Id,
       UserName: values.name,
       LastName: values.lastname,
       Email: values.email,

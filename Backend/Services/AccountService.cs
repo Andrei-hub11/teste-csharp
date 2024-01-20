@@ -99,30 +99,28 @@ public class AccountService : IAccount
         return await _userManager.GetRolesAsync(user);
     }
 
-    public async Task<ErrorOr<UserDTO>> UpdateUserAsync(UserUpdateModel userData) { 
+    public async Task<ErrorOr<UserDTO>> UpdateUserAsync(UserUpdateModel userData, string userId) { 
         List<Error> errors = new();
 
-        var user = await _userManager.Users.FirstOrDefaultAsync((user) => user.Email == user.Email);
+        var user = await _userManager.FindByIdAsync(userId);
 
         if (user == null)
         {
             errors.Add(
             Error.Validation(
-                description: $"O usuário com o email {user.Email} não foi encontrado"
+                description: $"O usuário com o id {userId} não foi encontrado"
             )
         );
             return errors;
         }
 
-        var result = await _userManager.FindByEmailAsync(userData.Email);
-
-        if (string.IsNullOrEmpty(userData.Email) && result != null)
+        if (!string.IsNullOrEmpty(userData.Email) && user.Id != userId)
         {
             errors.Add(
-           Error.Validation(
-               description: $"O email {userData.Email} já existe para outro usuário."
-           )
-       );
+                Error.Validation(
+                    description: $"O email {userData.Email} já existe para outro usuário."
+                )
+            );
             return errors;
         }
 

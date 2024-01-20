@@ -186,8 +186,8 @@ public class AccountController : ControllerBase
     }
 
     [Authorize(Policy = "UserOrAdmin")]
-    [HttpPut("update-user")]
-    public async Task<IActionResult> UpdateUser([FromBody] UserUpdateModel userData)
+    [HttpPut("update-user/{userId}")]
+    public async Task<IActionResult> UpdateUser(string userId, [FromBody] UserUpdateModel userData)
     {
         var validator = new UserUpdateValidator();
         var validationResult = validator.Validate(userData);
@@ -200,7 +200,7 @@ public class AccountController : ControllerBase
         try
         {
            
-            var result = await _accountService.UpdateUserAsync(userData);
+            var result = await _accountService.UpdateUserAsync(userData, userId);
 
             if (result.IsError)
             {
