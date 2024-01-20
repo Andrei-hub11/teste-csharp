@@ -30,6 +30,7 @@ import {
 } from "../../utils/account/sliceAccount";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import manageJWTCookieState from "../../utils/customHook/useJwt/useJwt";
 
 function Home() {
   const dispatch = useAppDispatch();
@@ -38,10 +39,13 @@ function Home() {
   );
 
   const navigate = useNavigate();
+  const { token } = manageJWTCookieState();
 
   useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
+    if (token) {
+      dispatch(getUsers());
+    }
+  }, [dispatch, token]);
 
   useEffect(() => {
     if (isError) {
