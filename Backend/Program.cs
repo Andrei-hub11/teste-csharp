@@ -99,6 +99,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+MigrateData.CreateInitialMigrate(app.Services);
 // garatindo que os roles do identity vão estar disponiveis inicialmente na criação de novos users
 await SeedData.CreateInitialsRolesAsync(app.Services);
 

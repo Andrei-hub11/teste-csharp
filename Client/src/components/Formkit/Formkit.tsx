@@ -14,7 +14,7 @@ import {
   StyledLoader,
 } from "./FormkitStyles";
 
-import VisibilityOffIcon from "../../assets/icons/streamline_visible-solid.svg";
+import VisibilityOffIcon from "../../assets/icons/invisible-variant.svg";
 
 import useFormKit from "./useFormkit";
 
